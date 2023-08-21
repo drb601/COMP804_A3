@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- I'm not aiming for this website to look good with the styling, so the colours are... creative -->
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> Darren Bridgman, 3470891, Assessment 3 </title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                let elems = document.querySelectorAll('.clickable button');
+                for(let i = 0; i < elems.length; i++){
+                    elems[i].addEventListener('click', ClickableHandler);
+                }
+            });
+            function ClickableHandler(s, e) {
+                let wasClicked = document.getElementsByClassName('just-clicked');
+                if(wasClicked.length > 0)
+                {
+                    wasClicked[0].classList.remove('just-clicked');
+                }
+                this.classList.add('just-clicked');
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                let elem = document.getElementById('t4CatButton');
+                elem.addEventListener('click', CatClicked);
+            });
+            function CatClicked(s, e) {
+                ButtonClicked('cat', '.task4 .image .cat');
+            }
+            document.addEventListener('DOMContentLoaded', function() {
+                let elem = document.getElementById('t4DogButton');
+                elem.addEventListener('click', DogClicked);
+            });
+            function DogClicked(s, e) {
+                ButtonClicked('dog', '.task4 .image .dog');
+            }
+            document.addEventListener('DOMContentLoaded', function() {
+                let elem = document.getElementById('t4FrogButton');
+                elem.addEventListener('click', FrogClicked);
+            });
+            function FrogClicked(s, e) {
+                ButtonClicked('frog', '.task4 .image .frog');
+            }
+            function ButtonClicked(animal, imageSelector) {
+                /*
+                I could remove the imageSelector parameter, and build it like:
+                let imageSelector = '.task4 .image .'+animal
+
+                ...but that would mix displayed content with logic control data, which is unnecessary
+                and something I don't like to do if I can avoid it. It would also be really annoying if
+                the webpage needed to be multilingual (unlikely here, but that doesn't matter).
+                */
+                let textField = document.getElementById('Task4Input');
+                let response = document.getElementById('Task4Response');
+                animal = animal.toLowerCase();
+                textField.value = 'User clicked ' + animal;
+                response.innerHTML = animal[0].toUpperCase() + animal.substring(1) + ' is clicked.';
+                let wasSelected = document.getElementsByClassName('just-selected');
+                if(wasSelected.length > 0)
+                {
+                    wasSelected[0].classList.remove('just-selected');
+                }
+                let isSelected = document.querySelector(imageSelector);
+                if(!!isSelected)
+                {
+                    isSelected.classList.add('just-selected');
+                }
+            }
+        </script>
+        <style>
+            h1.structure {
+                color: black;
+                background-color: white;
+                text-align: left;
+            }
+
+            div.task1 {
+                background-color: coral;
+                border: dashed;
+                border-color: blue;
+            }
+            div.task1 h1 {
+                font-family: Verdana, Geneva, Tahoma, sans-serif;;
+                color: crimson;
+                text-align: center;
+            }
+            div.task1 h2 {
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                color: darkred;
+                text-align: center;
+            }
+            div.task1 h3 {
+                font-family: 'Courier New', Courier, monospace;
+                color: green;
+                text-align: center;
+            }
+
+            table {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            table.task2 {
+                border-style: dotted;
+                border-color: gold;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            table.task2 th {
+                background-color: limegreen;
+                color: darkgreen;
+            }
+            table.task2 tr:nth-child(odd) {
+                background-color: lightblue;
+                color: blue;
+            }
+            table.task2 tr:nth-child(even) {
+                background-color: lightpink;
+                color: darkmagenta;
+            }
+
+            table.task3 td img {
+                width: 200px;
+            }
+            table.task3 {
+                border-style: groove;
+            }
+            table.task3 th {
+                background-color: gray;
+            }
+            table.task3 tr td:first-child p {
+                font-weight: bold;
+            }
+            table.task3 tr:nth-child(odd) {
+                background-color: white;
+            }
+            table.task3 tr:nth-child(even) {
+                background-color: lightgray;
+            }
+
+            .task4 img {
+                width: 200px;
+            }
+            .task4 .image div {
+                display: none;
+            }
+            .task4 .image div.just-selected {
+                display: block;
+            }
+            .task4 .just-clicked {
+                border-style: solid;
+                border-width: 3px;
+            }
+            .task4 .just-clicked.cat {
+                border-color: green;
+            }
+            .task4 .just-clicked.dog {
+                border-color: orange;
+            }
+            .task4 .just-clicked.frog {
+                border-color: purple;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Task 1 -->
+        <h1 class="structure">Task 1</h1>
+        <div class="task1">
+            <h1>Darren Bridgman, 3470891</h1>
+            <h2>COMP804: Web Security</h2>
+            <!-- The due date is expressed in ISO-8601, UTC time - because I can :) -->
+            <!-- Equivalents: 2023-08-21T23:00:00+10:00 -->
+            <!--              11pm, Monday 21/08/2023 -->
+            <h3>Assignment 3. Due 2023-08-21T13:00:00Z</h3>
+        </div>
+        <br><br>
+        <hr>
+        <h1 class="structure">Task 2</h1>
+        <!-- Task 2 -->
+        <!-- 
+            The contents of this table were initially copied and pasted verbatim from the website (uow.edu.au).
+            This was done to avoid retyping it. Some minor changes were made.
+        -->
+        <table class="task2">
+            <thead>
+                <th>Activity</th>
+                <th>Date</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>First day to enrol for re-enrolling (continuing students)</td>
+                    <td>21 Nov 2022</td>
+                </tr>
+                <tr>
+                    <td>First day to enrol for new students (commencing students)</td>
+                    <td>05 Dec 2022</td>
+                </tr>
+                <tr>
+                    <td>Orientation</td>
+                    <td>
+                        <p>20 Feb - 23 Feb 2023</p>
+                        <p>Further information is available on <a href="https://uow.edu.au/student/get-started/orientation/">Get Started</a></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Lectures Commence (weeks 1-6)</td>
+                    <td>27 Feb - 07 Apr 2023</td>
+                </tr>
+                <tr>
+                    <td>Last day to enrol / add subjects yourself</td>
+                    <td>10 Mar 2023</td>
+                </tr>
+                <tr>
+                    <td>Last day to enrol / add subjects with Head of Students approval</td>
+                    <td>17 Mar 2023</td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><strong>CENSUS DATE</strong></p>
+                        <ul>
+                            <li>Fees due</li>
+                            <li>Last day to withdraw from subject/s without paying for them</li>
+                            <li>HECS / FEE HELP debt reporting date</li>
+                            <li>Last day to change HECS / FEE HELP billing option</li>
+                        </ul>
+                        <p><a href="https://uowedu.service-now.com/kb?id=kb_article_view&amp;sysparm_article=KB0012659">Learn more about Census date &gt;</a></p>
+                    </td>
+                    <td>
+                        <div>31 Mar 2023</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>Student Services and Amenities Fees Due</div>
+                    </td>
+                    <td>01 Apr 2023</td>
+                </tr>
+                <tr>
+                    <td>Last day to withdraw without academic penalty - subject deleted from record
+                        <p>Fail grade recorded if subject withdrawn after this date</p>
+                    </td>
+                    <td>05 May 2023</td>
+                </tr>
+                <tr>
+                    <td>Mid-Session Recess (1 week)</td>
+                    <td>10 Apr - 14 Apr 2023</td>
+                </tr>
+                <tr>
+                    <td>Lectures Recommence (weeks 7-13)</td>
+                    <td>17 Apr - 02 Jun 2023</td>
+                </tr>
+                <tr>
+                    <td>Study Recess (1 week)</td>
+                    <td>05 Jun - 09 Jun 2023</td>
+                </tr>
+                <tr>
+                    <td>Exams (2 weeks)</td>
+                    <td>10 Jun - 22 Jun 2023</td>
+                </tr>
+                <tr>
+                    <td>Mid-Year Recess (4 weeks)</td>
+                    <td>26 Jun - 21 Jul 2023</td>
+                </tr>
+                <tr>
+                    <td>Release of Results</td>
+                    <td>06 Jul 2023</td>
+                </tr>
+            </tbody>
+        </table>
+        <br><br>
+        <hr>
+        <h1 class="structure">Task 3</h1>
+        <!-- Task 3 -->
+        <table class="task3">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Web Attacks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <p>SQL Injection</p>
+                        <img src="SQLnjection.png" />
+                        <br>
+                        Image from www.simplilearn.com (<a href="https://www.simplilearn.com/ice9/free_resources_article_thumb/SQLnjection.png">link</a>)
+                    </td>
+                    <td>
+                        Structured Query Language (SQL) is the language that is used to query relational databases, which are
+                        used ubiquitously. A successful SQL injection attack occurs when an attacker inputs SQL code that is ultimately
+                        run by the database engine, typically with the aim to obtain information. There are a few subtypes of this attack,
+                        including unsanitised input, blind, and out of band. Unsanitised input, for example, is when the input (on the website,
+                        or other user interface) is intended to be data stored in the database, but is crafted to form part of the query that
+                        is executed instead.
+                        <br>
+                        <br>
+                        <a href="https://www.rapid7.com/fundamentals/sql-injection-attacks/">https://www.rapid7.com/fundamentals/sql-injection-attacks/</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>XSS</p>
+                        <img src="XSS-attacks-what-is-cross-site-scripting.png" />
+                        <br>
+                        Image from evalian.co.uk (<a href="https://evalian.co.uk/wp-content/uploads/2022/03/XSS-attacks-what-is-cross-site-scripting.png">link</a>)
+                    </td>
+                    <td>
+                        XSS, or cross-site scripting, is an attack that uses vulnerable websites to cause other users browsers
+                        to load malicious scripts. These scripts are commonly written in JavaScript, but may be written in any
+                        language that the browser supports. This attack is similar to SQL injection in that it involves what was
+                        expected to be data being treated as executable code. Unlike SQL injection though, this attack targets
+                        other users, rather than the website itself.
+                        <br>
+                        <br>
+                        <a href="https://www.rapid7.com/fundamentals/cross-site-scripting/">https://www.rapid7.com/fundamentals/cross-site-scripting/</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>DOS/DDOS</p>
+                        <img src="ddos-volumetric-attack.png" />
+                        <br>
+                        Image from www.onelogin.com (<a href="https://www.onelogin.com/images/patterns/text-image/ddos-volumetric-attack.png">link</a>)
+                    </td>
+                    <td>
+                        DOS, or denial of service, is an attack that prevents other users from using a particular service (e.g. a website).
+                        One way of accomplishing this is to consume all (or most) of a given resource like network connections, memory, disk space, etc.,
+                        so that there are no resources left to serve legitimate users. A variant of a denial of service of particular interest is called
+                        a distributed denial of service (DDOS), which uses multiple computers to attack the target simultaneously. 
+                        <br>
+                        <br>
+                        <a href="https://www.rapid7.com/fundamentals/denial-of-service-attacks/">https://www.rapid7.com/fundamentals/denial-of-service-attacks/</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Broken authentication</p>
+                        <img src="broken_authentication.png" />
+                        <br>
+                        Image from medium.com (<a href="https://miro.medium.com/v2/1*maDurffbb2bA2K3byz5Ylg.png">link</a>)
+                    </td>
+                    <td>
+                        Broken authentication attacks occur when an attacker gains access to a system by compromising authentication mechanisms.
+                        This includes obtaining passwords (there are password lists online, and password reused is not uncommon), or other
+                        keys/tokens/etc, often from inherently insecure protocols. Sending credentials over an insecure (unencrypted) channel is one of 
+                        a number of common causes.
+                        <br>
+                        <br>
+                        <a href="https://www.contrastsecurity.com/glossary/broken-authentication">https://www.contrastsecurity.com/glossary/broken-authentication</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Fuzzing</p>
+                        <img src="Fuzzing.png" />
+                        <br>
+                        Image from www.freecodecamp.org (<a href="https://www.freecodecamp.org/news/content/images/2021/02/Fuzzing.png">link</a>)
+                    </td>
+                    <td>
+                        Fuzzing is an automated software testing method that aims to make an application behave in an unintended way.
+                        This is achieved by providing random, or otherwise abnormal input until the unintended behaviour occurs, at which
+                        point a vulnerability is identified and may be fixed. ALternatively, the vulnerability may be exploited,
+                        or kept for later use.
+                        <br>
+                        <br>
+                        <a href="https://brightsec.com/blog/fuzzing/">https://brightsec.com/blog/fuzzing/</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>MITM</p>
+                        <img src="mitm.png" />
+                        <br>
+                        Image from cpanel.net (<a href="https://docs.cpanel.net/img/mitm.png">link</a>)
+                    </td>
+                    <td>
+                        Man in the middle (MITM) is an attack where the attacker inserts themselves into the middle of
+                        a legitimate communication. The attacker is then able to read the messages being sent, and in some
+                        variants of the attack, can manipulate the communications. An example of a MITM attack is when the
+                        attacker impersonates each party to the other party by forwarding each party's messages.
+                        <br>
+                        <br>
+                        <a href="https://www.rapid7.com/fundamentals/man-in-the-middle-attacks/">https://www.rapid7.com/fundamentals/man-in-the-middle-attacks/</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Phishing</p>
+                        <img src="phishing.jpg" />
+                        <br>
+                        Image from www.corsicatech.com (<a href="https://www.corsicatech.com/wp-content/uploads/2022/09/phishing.jpg">link</a>)
+                    </td>
+                    <td>
+                        Phishing is an attack that uses social engineering (manipulation of a human by convincing them to do something)
+                        to obtain information. Information commonly sought is usernames/passwords, possibly from websites linked to by
+                        the phisher (person performing the phishing attack) that look legitimate, but are controlled by the phisher.
+                        A variant of this attack, called spear phishing, uses more detailed information about a specific target in order
+                        to create a more believable attack. Another variant, called whaling, targets high level executives such as a CEO,
+                        with the aim of gaining more valuable information.
+                        <br>
+                        <br>
+                        <a href="https://www.rapid7.com/fundamentals/phishing-attacks/">https://www.rapid7.com/fundamentals/phishing-attacks/</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Enumeration</p>
+                        <img src="username-enumeration-attack-featured.jpg" />
+                        <br>
+                        Image from kasperskydaily.com (<a href="https://media.kasperskydaily.com/wp-content/uploads/sites/92/2020/04/02185715/username-enumeration-attack-featured.jpg">link</a>)
+                    </td>
+                    <td>
+                        An enumeration attack is an attack in which the attacker uses brute force to check for the existence of
+                        data. Data can be confirmed to exist if the reponse differs when the extant data is tested for. An
+                        example of this attack is checking for valid usernames, if a valid username and invalid password has a different
+                        error message to an incorrect username and incorrect password. The difference in response could even be in time
+                        it takes for the reponse to be given.
+                        <br>
+                        <br>
+                        <a href="https://www.upguard.com/blog/what-is-an-enumeration-attack">https://www.upguard.com/blog/what-is-an-enumeration-attack</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Directory traversal</p>
+                        <img src="directory_traversal.gif" />
+                        <br>
+                        Image from acunetix.com (<a href="https://cdn.acunetix.com/wp_content/uploads/2012/10/PTMFOG00000002841.gif">link</a>)
+                    </td>
+                    <td>
+                        A directory traversal attack is an attack in which the attacker reads files from the web server
+                        other than the files they are supposed to read, like a file containing passwords instead of an image.
+                        This attack is possible when user input is included in a file path used to retrieve a file.
+                        The attack could consist of including "../" sequences, which navigate to the parent directory, or
+                        specifying an absolute path.
+                        <br>
+                        <br>
+                        <a href="https://portswigger.net/web-security/file-path-traversal">https://portswigger.net/web-security/file-path-traversal</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Ransomware</p>
+                        <img src="ransomware.jpg" />
+                        <br>
+                        Image from kaspersky.com (<a href="https://www.kaspersky.com/content/en-global/images/repository/isc/2021/ransomware.jpg">link</a>)
+                    </td>
+                    <td>
+                        Ransomware is a type of malware that, once placed on a compromised system, encrypts data so that the target does
+                        not have access to it. It then offers to sell the target the means to decrypt it in exchange for (typically)
+                        some amount of a cryptocurrency. Ransomware often deletes backups/etc. of the data, and carefully selects the
+                        types of data to encrypt in order to maximise that chance of success (reducing the ability to restore data
+                        without decrypting, while keeping the system stable). Some variants of ransomware perform additional steps,
+                        including for example, data theft. This has the additional benefit (to the attacker) of allowing them to release
+                        data publicly as an additional incentive to the victim to pay. 
+                        <br>
+                        <br>
+                        <a href="https://www.checkpoint.com/cyber-hub/threat-prevention/ransomware/">https://www.checkpoint.com/cyber-hub/threat-prevention/ransomware/</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br><br>
+        <hr>
+        <h1 class="structure">Task 4</h1>
+        <!-- Task 4 -->
+        <div class="task4">
+            <div class="clickable">
+                <button id="t4CatButton" class="cat">Cat</button>
+                <button id="t4DogButton" class="dog">Dog</button>
+                <button id="t4FrogButton" class="frog">Frog</button>
+            </div>
+            <br>
+            <input id="Task4Input" type="text"></input>
+            <br><br>
+            <div id="Task4Response">&nbsp;</div>
+            <br>
+            <div class="image">
+                <div class="dog">
+                    <img src="Golden_retriever_eating_pigs_foot.jpg" />
+                    <br>
+                    By Denhulde, <a href="https://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=4300940">Link</a>
+                    <br>
+                </div>
+                <div class="cat">
+                    <img src="Domestic_Cat_Face_Shot.jpg" />
+                    <br>
+                    By Augustus Binu, <a href="https://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=73471816">Link</a>
+                    <br>
+                </div>
+                <div class="frog">
+                    <img src="Ranapipiensmoulting.jpg" />
+                    <br>
+                    By Mokele, <a href="https://creativecommons.org/licenses/by/3.0" title="Creative Commons Attribution 3.0">CC BY 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=14710011">Link</a>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <h1 class="structure">Task 5</h1>
+    </body>
+</html>
